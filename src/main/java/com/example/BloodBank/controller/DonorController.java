@@ -18,12 +18,12 @@ public class DonorController {
         this.donorService = donorService;
     }
 
-    @PostMapping("/api/donors")
+    @PostMapping
     public Donor addDonor(@Valid @RequestBody Donor donor) {
         return donorService.addDonor(donor);
     }
 
-    @GetMapping("/api/donors")
+    @GetMapping
     public List<Donor> getAllDonors() {
         return donorService.getAllDonors();
     }

@@ -2,6 +2,9 @@ package com.example.BloodBank.controller;
 
 import com.example.BloodBank.model.IssueRecord;
 import com.example.BloodBank.service.IssueRecordService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,5 +52,9 @@ public class IssueRecordController {
         issueRecordService.deleteIssueRecord(id);
 
         return ResponseEntity.ok("Issue record deleted successfully");
+    }
+    @PostMapping("/issue")
+    public IssueRecord issueBlood(@Valid @RequestBody IssueRecord issueRecord) {
+        return issueRecordService.issueBlood(issueRecord);
     }
 }

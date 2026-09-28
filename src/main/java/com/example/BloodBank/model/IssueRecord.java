@@ -4,6 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.NotNull;
+
+
 
 import java.time.LocalDate;
 
@@ -14,12 +20,17 @@ public class IssueRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Blood group is required")
     private String bloodGroup;
 
+    @Positive(message = "Quantity must be greater than zero")
     private int quantity;
 
+    @NotBlank(message = "Issued to is required")
     private String issuedTo;
 
+    @NotNull(message = "Issue date is required")
+    @PastOrPresent(message = "Issue date cannot be in the future")
     private LocalDate issueDate;
 
     public IssueRecord() {
